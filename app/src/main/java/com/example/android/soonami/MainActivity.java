@@ -166,9 +166,14 @@ public class MainActivity extends AppCompatActivity {
                 urlConnection.connect();
                 if(urlConnection.getResponseCode() ==200){
                 inputStream = urlConnection.getInputStream();
-                jsonResponse = readFromStream(inputStream);}
+                jsonResponse = readFromStream(inputStream);
+
+                }else{
+                    Log.e("open url connection","Url response code " + urlConnection.getResponseCode());
+                }
             } catch (IOException e) {
                 // TODO: Handle the exception
+                Log.e("makeHttpRequest","io exception");
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
